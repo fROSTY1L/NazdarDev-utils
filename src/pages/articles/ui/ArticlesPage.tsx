@@ -1,4 +1,4 @@
-import CreateArticleForm from "@/features/create-article/ui/CreateArticleForm"
+import CreateArticleForm from "@/features/article/ui/CreateArticleForm"
 import ArticlesTable from "@/widgets/articles-table"
 
 interface ArticlePageProps {

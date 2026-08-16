@@ -1,7 +1,9 @@
+import ExperienceChain from "@/widgets/experience-chain/ui/ExperienceChain"
+
 const ExperiencePage = () => {
   return (
-    <div>
-      Exp
+    <div className="w-full">
+      <ExperienceChain />
     </div>
   )
 }

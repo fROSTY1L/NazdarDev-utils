@@ -1,4 +1,5 @@
-import { useArticles } from "@/features/create-article/model/useArticles"
+import { useArticles } from "@/features/article/model/useArticles"
+import { useDeleteArticle } from "@/features/article/model/useDeleteArticel"
 import { Button } from "@/shared/ui/button"
 import DeleteButton from "@/shared/ui/delete-button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table"
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom"
 
 const ArticlesTable = () => {
   const { data: articles = [], isLoading } = useArticles()
+  const { mutate, isPending } = useDeleteArticle();
   if (isLoading) return (<div>Loading...</div>)
   return (
     <Table>
@@ -34,7 +36,11 @@ const ArticlesTable = () => {
               <Link to={`/articles/${article.id}/edit`}>Редактировать</Link>
             </TableCell>
             <TableCell className="flex justify-end">
-              <DeleteButton id={article.id}/>
+              <DeleteButton 
+                  id={article.id} 
+                  title={article.title}
+                  onDelete={mutate} 
+                  isPending={isPending}/>
             </TableCell>
           </TableRow>
         ))}

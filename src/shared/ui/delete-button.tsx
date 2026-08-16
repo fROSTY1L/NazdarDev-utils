@@ -1,17 +1,18 @@
-import { useDeleteArticle } from "@/features/create-article/model/useDeleteArticel"
 import { Button } from "./button";
 import { Trash } from "lucide-react";
 
+
 interface Props {
     id: number
+    title: string
+    isPending: boolean
+    onDelete: (id: number) => void
 }
 
-const DeleteButton = ({ id }: Props) => {
-    const { mutate, isPending } = useDeleteArticle();
-
+const DeleteButton = ({ id, title, onDelete, isPending }: Props) => {
     const handleDelete = () => {
-        if (!confirm('Удалить статью?')) return
-        mutate(id);
+        if (!confirm(`Удалить объект: ${title}`)) return
+        onDelete(id);
     }
 
   return (
